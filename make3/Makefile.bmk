@@ -1,0 +1,6 @@
+CC=/usr/local/bin/gcc
+PROGS=test test2
+MAN=
+
+.include <bsd.progs.mk>
+.include <bsd.dep.mk>

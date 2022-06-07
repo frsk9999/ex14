@@ -1,0 +1,17 @@
+CC=/usr/local/bin/gcc
+CFLAGS=-c
+SRCS=test.c test2.c
+OBJ=$(SRCS:.c=.o)
+TARGET=test test2
+
+all: $(TARGET)
+#	$(foreach program,$(TARGET),$(eval $(call $(CC) $(CFLAGS) $(program).c -o $(program))))
+
+$(TARGET): %: %.o
+	$(CC) $< -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -rf $(OBJ) $(TARGET)
